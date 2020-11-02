@@ -363,6 +363,23 @@ TEST(Time, OperatorPlusExceptions)
   EXPECT_THROW(t5 + d3, std::runtime_error);
 }
 
+TEST(Time, IsZero)
+{
+  ros::Time::init();
+
+  Time t1(0, 0);
+  Time t2(0.0);
+  Time t3(0);
+  Time t4(0, 1);
+  Time t5(0.12);
+
+  EXPECT_TRUE(t1.isZero());
+  EXPECT_TRUE(t2.isZero());
+  EXPECT_TRUE(t3.isZero());
+  EXPECT_FALSE(t4.isZero());
+  EXPECT_FALSE(t5.isZero());
+}
+
 /************************************* Duration Tests *****************/
 
 TEST(Duration, Comparitors)
